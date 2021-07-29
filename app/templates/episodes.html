@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Episodes</h3>
+<form action="" method="post" class="episode-creator">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.title.label }}<br>
+        {{ form.title(size=60) }}<br>
+        {% for error in form.title.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.plot.label }}<br>
+        {{ form.plot(cols=60, rows=10) }}<br>
+        {% for error in form.plot.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+<section class="episode-list">
+    {% for episode in episodes %}
+        {% include '_episode.html' %}
+    {% endfor %}
+</section>
+
+{% endblock %}
+

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Writers</h3>
+<p>This is not an exhaustive list of users. But it is a complete accounting of those users who have submitted episodes.</p>
+
+<section class="writer-list">
+    {% for writer in writers %}
+        <p><a href="{{ url_for('user', username=writer.username)}}">{{writer.username}}</a></p>
+    {% endfor %}
+</section>
+{% endblock %}
